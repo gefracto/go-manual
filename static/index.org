@@ -1,0 +1,129 @@
+#+BEGIN_CENTER 
+Если ты не видишь эту надпись, значит, твой deploy не удался
+#+END_CENTER
+[[file:петросян.jpg]]
+
+
+Привет, %username%. 
+Сегодня мы -- следуя этому мануалу -- задеплоим на хероку контейнер с этим мануалом. Такая вот рекурсия.
+
+Отдохни, сделай кофе. 
+
+Приготовься. 
+
+Глубокий вдох. 
+
+Готов?
+
+* Инструменты
+** Linux
++ Эмулятор терминала
+** Windows
++ Git bash
+
+#+BEGIN_CENTER
+ПОЕХАЛИ!
+#+END_CENTER
+
+
+* Создаем новый проект
+
+** На гитхабе
+*** На github.com создаем новый репозиторий. Обзываем его именем вашего проекта.
+[[file:newrepo.png]]
+[[file:namerepo.png]]
+
+*** Жмем Create
+
+[[file:createrepo.png]]
+
+*** Попадаем на страницу QuickSetup, можно её пока оставить - там инструкции для инициализации локального проекта.
+[[file:inithelp.png]]
+
+** Локально
+*** Создаем директорию $GOPATH/src/github.com/yourgitname/yourproject и переходим в неё.
+В моем случае это:
+#+BEGIN_SRC sh
+mkdir ~/go/src/github.com/gefracto/go-manual
+cd ~/go/src/github.com/gefracto/go-manual
+#+END_SRC
+
+*** Со страницы QuickSetup git'a копируем команды, но не забываем добавить "git add .":
+#+BEGIN_SRC sh
+git init
+git add .
+git commit -m "first commit"
+git remote add origin git@github.com:gefracto/go-manual.git
+git push -u origin master
+#+END_SRC
+
+[[file:gitinit.png]] 
+
+[[file:addcommit.png]] 
+
+[[file:gitpusherror.png]] 
+
+
+*** Ошибка команды git push
+Возможно, ты увидишь такое же сообщение. 
+
+#+BEGIN_SRC sh
+fatal: cannot run ssh: Нет такого файла или каталога
+fatal: unable to fork
+#+END_SRC
+
+Оно говорит о том, что нам нужно сгенерить ssh-key. 
+
+Даже если тебе удалось запушить, все равно выполни этот шаг - ssh-key нам ещё пригодится.
+
+*** Генерируем ssh
+Выполняем в терминале:
+#+BEGIN_SRC sh
+ssh-keygen -t rsa -b 4096 -C "gefracto@circleci.com"
+#+END_SRC
+
+[[file:ssh-keygen.png]]
+
+Заметь, что команда заканчивается комментарием "-C "gefracto@circleci.com"". До символа @ - это твой git-логин. В дальнейшем этот комментарий понадобится нам для деплоинга на хероку.
+
+*** Привязываем ssh к github
+
+**** Выполняем в консоли:
+#+BEGIN_SRC sh
+cat ~/.ssh/id_rsa.pub
+#+END_SRC
+
+[[file:id_rsapub.png]] 
+
+Делаем ctrl+C этого мусора и идем на github.com.
+
+**** Переходим в настройки нашего репозитория, находим пункт Deploy keys
+
+[[file:gitsettings.png]]
+
+[[file:deploykeys.png]]
+
+**** Тыцаем "Add deploy key"
+**** В поле title вводим имя любимого кота или название проекта. Без разницы.
+**** В поле key вставляем скопированный ssh-мусор
+**** Не забываем отметить галочкой "Allow write access"
+
+[[file:adddeploykey.png]]
+
+[[file:resaddgitkey.png]]
+
+*** Повторяем git push, если первый раз не удался
+
+#+BEGIN_SRC sh
+git push -u origin master
+#+END_SRC
+
+[[file:gitpushsuccess.png]]
+
+#+BEGIN_CENTER
+УСПЕХ!
+#+END_CENTER
+
+[[file:continue.jpg]]
+
+

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>index</title>
-<!-- 2017-07-26 Ср 21:49 -->
+<!-- 2017-07-26 Ср 23:03 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -149,8 +149,23 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#sec-2">2. Создаем новый проект</a>
 <ul>
-<li><a href="#sec-2-1">2.1. На гитхабе</a></li>
-<li><a href="#sec-2-2">2.2. Локально</a></li>
+<li><a href="#sec-2-1">2.1. На гитхабе</a>
+<ul>
+<li><a href="#sec-2-1-1">2.1.1. На github.com создаем новый репозиторий. Обзываем его именем вашего проекта.</a></li>
+<li><a href="#sec-2-1-2">2.1.2. Жмем Create</a></li>
+<li><a href="#sec-2-1-3">2.1.3. Попадаем на страницу QuickSetup, можно её пока оставить - там инструкции для инициализации локального проекта.</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-2">2.2. Локально</a>
+<ul>
+<li><a href="#sec-2-2-1">2.2.1. Создаем директорию $GOPATH/src/github.com/yourgitname/yourproject и переходим в неё.</a></li>
+<li><a href="#sec-2-2-2">2.2.2. Со страницы QuickSetup git'a копируем команды, но не забываем добавить "git add .":</a></li>
+<li><a href="#sec-2-2-3">2.2.3. Ошибка команды git push</a></li>
+<li><a href="#sec-2-2-4">2.2.4. Генерируем ssh</a></li>
+<li><a href="#sec-2-2-5">2.2.5. Привязываем ssh к github</a></li>
+<li><a href="#sec-2-2-6">2.2.6. Повторяем git push, если первый раз не удался</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -225,36 +240,46 @@ for the JavaScript code in this tag.
 </div><div id="outline-container-sec-2-1" class="outline-3">
 <h3 id="sec-2-1"><span class="section-number-3">2.1</span> На гитхабе</h3>
 <div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-sec-2-1-1" class="outline-4">
+<h4 id="sec-2-1-1"><span class="section-number-4">2.1.1</span> На github.com создаем новый репозиторий. Обзываем его именем вашего проекта.</h4>
+<div class="outline-text-4" id="text-2-1-1">
 <p>
-На github.com создаем новый репозиторий. Обзываем его именем вашего проекта.
 <img src="newrepo.png" alt="newrepo.png" />
 <img src="namerepo.png" alt="namerepo.png" />
 </p>
-
-<div class="center">
-<p>
-Жмем Create
-</p>
+</div>
 </div>
 
+<div id="outline-container-sec-2-1-2" class="outline-4">
+<h4 id="sec-2-1-2"><span class="section-number-4">2.1.2</span> Жмем Create</h4>
+<div class="outline-text-4" id="text-2-1-2">
 
 <div class="figure">
 <p><img src="createrepo.png" alt="createrepo.png" />
 </p>
 </div>
+</div>
+</div>
 
-<p>
-Попадаем на страницу QuickSetup, можно её пока оставить - там инструкции для инициализации локального проекта.
-<img src="inithelp.png" alt="inithelp.png" />
+<div id="outline-container-sec-2-1-3" class="outline-4">
+<h4 id="sec-2-1-3"><span class="section-number-4">2.1.3</span> Попадаем на страницу QuickSetup, можно её пока оставить - там инструкции для инициализации локального проекта.</h4>
+<div class="outline-text-4" id="text-2-1-3">
+
+<div class="figure">
+<p><img src="inithelp.png" alt="inithelp.png" />
 </p>
+</div>
+</div>
 </div>
 </div>
 
 <div id="outline-container-sec-2-2" class="outline-3">
 <h3 id="sec-2-2"><span class="section-number-3">2.2</span> Локально</h3>
 <div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> Создаем директорию $GOPATH/src/github.com/yourgitname/yourproject и переходим в неё.</h4>
+<div class="outline-text-4" id="text-2-2-1">
 <p>
-Создаем директорию $GOPATH/src/github.com/yourgitname/yourproject и переходим в неё.
 В моем случае это:
 </p>
 <div class="org-src-container">
@@ -263,10 +288,12 @@ for the JavaScript code in this tag.
 cd ~/go/src/github.com/gefracto/go-manual
 </pre>
 </div>
+</div>
+</div>
 
-<p>
-Со страницы QuickSetup git'a копируем команды:
-</p>
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> Со страницы QuickSetup git'a копируем команды, но не забываем добавить "git add .":</h4>
+<div class="outline-text-4" id="text-2-2-2">
 <div class="org-src-container">
 
 <pre class="src src-sh">git init
@@ -278,18 +305,165 @@ git push -u origin master
 </div>
 
 
+<div class="figure">
+<p><img src="gitinit.png" alt="gitinit.png" /> 
+</p>
+</div>
 
 
 <div class="figure">
-<p><img src="gitinit.png" alt="gitinit.png" /> 
+<p><img src="addcommit.png" alt="addcommit.png" /> 
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="gitpusherror.png" alt="gitpusherror.png" /> 
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-2-3" class="outline-4">
+<h4 id="sec-2-2-3"><span class="section-number-4">2.2.3</span> Ошибка команды git push</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+Возможно, ты увидишь такое же сообщение. 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">fatal: cannot run ssh: Нет такого файла или каталога
+fatal: unable to fork
+</pre>
+</div>
+
+<p>
+Оно говорит о том, что нам нужно сгенерить ssh-key. 
+</p>
+
+<p>
+Даже если тебе удалось запушить, все равно выполни этот шаг - ssh-key нам ещё пригодится.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-4" class="outline-4">
+<h4 id="sec-2-2-4"><span class="section-number-4">2.2.4</span> Генерируем ssh</h4>
+<div class="outline-text-4" id="text-2-2-4">
+<p>
+Выполняем в терминале:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">ssh-keygen -t rsa -b 4096 -C "gefracto@circleci.com"
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="ssh-keygen.png" alt="ssh-keygen.png" />
+</p>
+</div>
+
+<p>
+Заметь, что команда заканчивается комментарием "-C "gefracto@circleci.com"". До символа @ - это твой git-логин. В дальнейшем этот комментарий понадобится нам для деплоинга на хероку.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-5" class="outline-4">
+<h4 id="sec-2-2-5"><span class="section-number-4">2.2.5</span> Привязываем ssh к github</h4>
+<div class="outline-text-4" id="text-2-2-5">
+</div><ol class="org-ol"><li><a id="sec-2-2-5-1" name="sec-2-2-5-1"></a>Выполняем в консоли:<br  /><div class="outline-text-5" id="text-2-2-5-1">
+<div class="org-src-container">
+
+<pre class="src src-sh">cat ~/.ssh/id_rsa.pub
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="id_rsapub.png" alt="id_rsapub.png" /> 
+</p>
+</div>
+
+<p>
+Делаем ctrl+C этого мусора и идем на github.com.
+</p>
+</div>
+</li>
+
+<li><a id="sec-2-2-5-2" name="sec-2-2-5-2"></a>Переходим в настройки нашего репозитория, находим пункт Deploy keys<br  /><div class="outline-text-5" id="text-2-2-5-2">
+
+<div class="figure">
+<p><img src="gitsettings.png" alt="gitsettings.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="deploykeys.png" alt="deploykeys.png" />
+</p>
+</div>
+</div>
+</li>
+
+<li><a id="sec-2-2-5-3" name="sec-2-2-5-3"></a>Тыцаем "Add deploy key"<br  /></li>
+<li><a id="sec-2-2-5-4" name="sec-2-2-5-4"></a>В поле title вводим имя любимого кота или название проекта. Без разницы.<br  /></li>
+<li><a id="sec-2-2-5-5" name="sec-2-2-5-5"></a>В поле key вставляем скопированный ssh-мусор<br  /></li>
+<li><a id="sec-2-2-5-6" name="sec-2-2-5-6"></a>Не забываем отметить галочкой "Allow write access"<br  /><div class="outline-text-5" id="text-2-2-5-6">
+
+<div class="figure">
+<p><img src="adddeploykey.png" alt="adddeploykey.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="resaddgitkey.png" alt="resaddgitkey.png" />
+</p>
+</div>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-2-2-6" class="outline-4">
+<h4 id="sec-2-2-6"><span class="section-number-4">2.2.6</span> Повторяем git push, если первый раз не удался</h4>
+<div class="outline-text-4" id="text-2-2-6">
+<div class="org-src-container">
+
+<pre class="src src-sh">git push -u origin master
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="gitpushsuccess.png" alt="gitpushsuccess.png" />
+</p>
+</div>
+
+<div class="center">
+<p>
+УСПЕХ!
+</p>
+</div>
+
+
+
+
+<div class="figure">
+<p><img src="continue.jpg" alt="continue.jpg" />
 </p>
 </div>
 </div>
 </div>
 </div>
 </div>
+</div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-07-26 Ср 21:49</p>
+<p class="date">Created: 2017-07-26 Ср 23:03</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
