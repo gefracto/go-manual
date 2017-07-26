@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>index</title>
-<!-- 2017-07-27 Чт 00:29 -->
+<!-- 2017-07-27 Чт 01:17 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -173,6 +173,8 @@ for the JavaScript code in this tag.
 <li><a href="#sec-3-1">3.1. Static этого мануала</a></li>
 </ul>
 </li>
+<li><a href="#sec-4">4. HEROKU.com</a></li>
+<li><a href="#sec-5">5. CIRCLECI.com</a></li>
 </ul>
 </div>
 </div>
@@ -512,13 +514,148 @@ fatal: unable to fork
 git push -u origin master
 </pre>
 </div>
+
+<div class="center">
+<p>
+Теперь приступаем к самому захватывающему &#x2013; настройке CircleCi и Heroku
+</p>
+</div>
 </div>
 </li></ol>
 </div>
 </div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> HEROKU.com</h2>
+<div class="outline-text-2" id="text-4">
+</div><ol class="org-ol"><li><a id="sec-4-0-0-1" name="sec-4-0-0-1"></a>Логинимся на heroku.<br  /></li>
+<li><a id="sec-4-0-0-2" name="sec-4-0-0-2"></a>Логинимся с помощью git-аккаунта<br  /></li>
+<li><a id="sec-4-0-0-3" name="sec-4-0-0-3"></a>Идем в раздел projects<br  /></li>
+<li><a id="sec-4-0-0-4" name="sec-4-0-0-4"></a>Идем в список своих проектов <a href="https://dashboard.heroku.com/apps">https://dashboard.heroku.com/apps</a><br  /></li>
+<li><a id="sec-4-0-0-5" name="sec-4-0-0-5"></a>Добавляем новое приложение (Create new app)<br  /><div class="outline-text-5" id="text-4-0-0-5">
+
+<div class="figure">
+<p><img src="addnewapp.png" alt="addnewapp.png" />
+</p>
+</div>
+</div>
+</li>
+
+<li><a id="sec-4-0-0-6" name="sec-4-0-0-6"></a>Пишем имя своего проекта, либо любое другое, и жмакаем "Create App"<br  /><div class="outline-text-5" id="text-4-0-0-6">
+
+<div class="figure">
+<p><img src="nameyourapp.png" alt="nameyourapp.png" />
+</p>
+</div>
+</div>
+</li>
+
+<li><a id="sec-4-0-0-7" name="sec-4-0-0-7"></a>Идем в настройки аккаунта (Account Settings)<br  /><div class="outline-text-5" id="text-4-0-0-7">
+
+<div class="figure">
+<p><img src="accsettings.png" alt="accsettings.png" />
+</p>
+</div>
+</div>
+</li>
+
+<li><a id="sec-4-0-0-8" name="sec-4-0-0-8"></a>Добавляем новый ssh-key, который нужен для взаимодействия с CircleCI.<br  /><div class="outline-text-5" id="text-4-0-0-8">
+
+<div class="figure">
+<p><img src="sshkeys.png" alt="sshkeys.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="newsshkey.png" alt="newsshkey.png" />
+</p>
+</div>
+
+<p>
+Напомню, что мы берем ssh, который создали ранее для привязки к git аккаунту.
+Получить его можно командой:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">cat ~/.ssh/id_rsa.pub
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-4-0-0-9" name="sec-4-0-0-9"></a>Save Changes<br  /><div class="outline-text-5" id="text-4-0-0-9">
+
+<div class="figure">
+<p><img src="sshadded.png" alt="sshadded.png" />
+</p>
+</div>
+
+
+<div class="center">
+<p>
+Забудем про HEROKU. 
+</p>
+
+<p>
+Он нам больше не нужен. 
+</p>
+
+<p>
+Почти.
+</p>
+</div>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> CIRCLECI.com</h2>
+<div class="outline-text-2" id="text-5">
+</div><ol class="org-ol"><li><a id="sec-5-0-0-1" name="sec-5-0-0-1"></a>Логинимся с помощью git-аккаунта<br  /></li>
+<li><a id="sec-5-0-0-2" name="sec-5-0-0-2"></a>В меню выбираем Projects, кликаем свой git-аккаунт<br  /><div class="outline-text-5" id="text-5-0-0-2">
+
+<div class="figure">
+<p><img src="projects.png" alt="projects.png" />
+</p>
+</div>
+</div>
+</li>
+
+<li><a id="sec-5-0-0-3" name="sec-5-0-0-3"></a>Жмем кнопку Add project<br  /></li>
+<li><a id="sec-5-0-0-4" name="sec-5-0-0-4"></a>Снова выбираем свой git, находим свой проект и тыкаем Setup project<br  /><div class="outline-text-5" id="text-5-0-0-4">
+
+<div class="figure">
+<p><img src="findproject.png" alt="findproject.png" />
+</p>
+</div>
+</div>
+</li>
+
+<li><a id="sec-5-0-0-5" name="sec-5-0-0-5"></a>Выставляем параметры:<br  /><div class="outline-text-5" id="text-5-0-0-5">
+<ul class="org-ul">
+<li>OS: Linux
+</li>
+<li>Platform: 2.0
+</li>
+<li>Language: Go
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-5-0-0-6" name="sec-5-0-0-6"></a>Начинаем билдить проект!<br  /><div class="outline-text-5" id="text-5-0-0-6">
+
+<div class="figure">
+<p><img src="startbuilding.png" alt="startbuilding.png" />
+</p>
+</div>
+</div>
+</li></ol>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-07-27 Чт 00:29</p>
+<p class="date">Created: 2017-07-27 Чт 01:17</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

@@ -160,3 +160,60 @@ git commit -am "my project"
 git push -u origin master
 #+END_SRC
 
+#+BEGIN_CENTER
+Теперь приступаем к самому захватывающему -- настройке CircleCi и Heroku
+#+END_CENTER
+
+* HEROKU.com
+**** Логинимся на heroku.
+**** Логинимся с помощью git-аккаунта
+**** Идем в раздел projects
+**** Идем в список своих проектов [[https://dashboard.heroku.com/apps]]
+**** Добавляем новое приложение (Create new app)
+[[file:addnewapp.png]]
+
+**** Пишем имя своего проекта, либо любое другое, и жмакаем "Create App"
+[[file:nameyourapp.png]]
+
+**** Идем в настройки аккаунта (Account Settings)
+[[file:accsettings.png]]
+
+**** Добавляем новый ssh-key, который нужен для взаимодействия с CircleCI.
+[[file:sshkeys.png]]
+
+[[file:newsshkey.png]]
+
+Напомню, что мы берем ssh, который создали ранее для привязки к git аккаунту.
+Получить его можно командой:
+#+BEGIN_SRC sh
+cat ~/.ssh/id_rsa.pub
+#+END_SRC
+
+**** Save Changes
+[[file:sshadded.png]]
+
+
+#+BEGIN_CENTER
+Забудем про HEROKU. 
+
+Он нам больше не нужен. 
+
+Почти.
+#+END_CENTER
+
+* CIRCLECI.com
+**** Логинимся с помощью git-аккаунта
+**** В меню выбираем Projects, кликаем свой git-аккаунт
+[[file:projects.png]]
+
+**** Жмем кнопку Add project
+**** Снова выбираем свой git, находим свой проект и тыкаем Setup project
+[[file:findproject.png]]
+
+**** Выставляем параметры:
++ OS: Linux
++ Platform: 2.0
++ Language: Go
+
+**** Начинаем билдить проект!
+[[file:startbuilding.png]]
