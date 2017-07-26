@@ -112,7 +112,9 @@ cat ~/.ssh/id_rsa.pub
 
 [[file:resaddgitkey.png]]
 
-*** Повторяем git push, если первый раз не удался
+*** Повторяем git push, если В ПЕРВЫЙ РАЗ НЕ ПОЛУЧИЛОСЬ
+
+[[file:continue.jpg]]
 
 #+BEGIN_SRC sh
 git push -u origin master
@@ -122,8 +124,39 @@ git push -u origin master
 
 #+BEGIN_CENTER
 УСПЕХ!
+Репозиторий создан. Можем теперь написать что-то на Go, а именно: простую программу, которая отдает static этого мануала.
 #+END_CENTER
 
-[[file:continue.jpg]]
+* Наполняем проект
+** Static этого мануала
+Ты можешь написать свой static, но я рекомендую использовать заготовленный мною.
 
+**** Скачай этот [[https://drive.google.com/open?id=0BxQORje5K7bCd3Z0Y1RmelVzZGc][zip-файл]] , предварительно отключив антивирус (шутка), и распакуй в корень своего пустого проекта.
+
+**** Создай в корне проекта файл main.go и скопипасть в него следующий текст:
+
+#+BEGIN_SRC go
+package main
+
+import (
+	"net/http"
+	"os"
+)
+
+func main() {
+	fileserver := http.FileServer(http.Dir("static"))
+	http.Handle("/", fileserver)
+	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
+}
+#+END_SRC
+
+После этих манипуляций корневая директория проекта выглядит так:
+[[file:rootdir0.png]]
+
+Делаем пуш:
+
+#+BEGIN_SRC sh
+git commit -am "my project"
+git push -u origin master
+#+END_SRC
 
