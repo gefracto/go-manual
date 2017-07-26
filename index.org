@@ -1,0 +1,64 @@
+#+BEGIN_CENTER 
+Если ты не видишь эту надпись, значит, твой deploy не удался
+#+END_CENTER
+[[file:петросян.jpg]]
+
+
+Привет, %username%. 
+Сегодня мы -- следуя этому мануалу -- задеплоим на хероку контейнер с этим мануалом. Такая вот рекурсия.
+
+Отдохни, сделай кофе. 
+
+Приготовься. 
+
+Глубокий вдох. 
+
+Готов?
+
+* Инструменты
+** Linux
++ Эмулятор терминала
+** Windows
++ Git bash
+
+#+BEGIN_CENTER
+ПОЕХАЛИ!
+#+END_CENTER
+
+
+* Создаем новый проект
+
+** На гитхабе
+На github.com создаем новый репозиторий. Обзываем его именем вашего проекта.
+[[file:newrepo.png]]
+[[file:namerepo.png]]
+
+#+BEGIN_CENTER 
+Жмем Create
+#+END_CENTER
+
+[[file:createrepo.png]]
+
+Попадаем на страницу QuickSetup, можно её пока оставить - там инструкции для инициализации локального проекта.
+[[file:inithelp.png]]
+
+** Локально
+Создаем директорию $GOPATH/src/github.com/yourgitname/yourproject и переходим в неё.
+В моем случае это:
+#+BEGIN_SRC sh
+mkdir ~/go/src/github.com/gefracto/go-manual
+cd ~/go/src/github.com/gefracto/go-manual
+#+END_SRC
+
+Со страницы QuickSetup git'a копируем команды:
+#+BEGIN_SRC sh
+git init
+git add .
+git commit -m "first commit"
+git remote add origin git@github.com:gefracto/go-manual.git
+git push -u origin master
+#+END_SRC
+
+
+
+[[file:gitinit.png]] 
