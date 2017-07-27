@@ -4,9 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>index</title>
-<!-- 2017-07-27 Чт 03:34 -->
+<!-- 2017-07-27 Чтв 09:27 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="reyc" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center; }
@@ -291,7 +292,7 @@ for the JavaScript code in this tag.
 <div class="org-src-container">
 
 <pre class="src src-sh">mkdir ~/go/src/github.com/gefracto/go-manual
-<span style="color: #A020F0;">cd</span> ~/go/src/github.com/gefracto/go-manual
+<span style="color: #F92672;">cd</span> ~/go/src/github.com/gefracto/go-manual
 </pre>
 </div>
 </div>
@@ -304,7 +305,7 @@ for the JavaScript code in this tag.
 
 <pre class="src src-sh">git init
 git add .
-git commit -m <span style="color: #4E9A06;">"first commit"</span>
+git commit -m <span style="color: #E6DB74;">"first commit"</span>
 git remote add origin git@github.com:gefracto/go-manual.git
 git push -u origin master
 </pre>
@@ -363,7 +364,7 @@ fatal: unable to fork
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">ssh-keygen -t rsa -b 4096 -C <span style="color: #4E9A06;">"gefracto@circleci.com"</span>
+<pre class="src src-sh">ssh-keygen -t rsa -b 4096 -C <span style="color: #E6DB74;">"gefracto@circleci.com"</span>
 </pre>
 </div>
 
@@ -483,17 +484,17 @@ fatal: unable to fork
 <li><a id="sec-3-1-0-2" name="sec-3-1-0-2"></a>Создай в корне проекта файл main.go и скопипасть в него следующий текст:<br  /><div class="outline-text-5" id="text-3-1-0-2">
 <div class="org-src-container">
 
-<pre class="src src-go"><span style="color: #A52A2A; font-weight: bold;">package</span> main
+<pre class="src src-go"><span style="color: #F92672;">package</span> main
 
-<span style="color: #A52A2A; font-weight: bold;">import</span> (
-    <span style="color: #4E9A06;">"net/http"</span>
-    <span style="color: #4E9A06;">"os"</span>
+<span style="color: #F92672;">import</span> (
+    <span style="color: #E6DB74;">"net/http"</span>
+    <span style="color: #E6DB74;">"os"</span>
 )
 
-<span style="color: #A52A2A; font-weight: bold;">func</span> <span style="color: #00578E; font-weight: bold;">main</span>() {
-    fileserver := http.<span style="color: #00578E; font-weight: bold;">FileServer</span>(http.<span style="color: #00578E; font-weight: bold;">Dir</span>(<span style="color: #4E9A06;">"static"</span>))
-    http.<span style="color: #00578E; font-weight: bold;">Handle</span>(<span style="color: #4E9A06;">"/"</span>, fileserver)
-    http.<span style="color: #00578E; font-weight: bold;">ListenAndServe</span>(<span style="color: #4E9A06;">":"</span>+os.<span style="color: #00578E; font-weight: bold;">Getenv</span>(<span style="color: #4E9A06;">"PORT"</span>), <span style="color: #F5666D;">nil</span>)
+<span style="color: #F92672;">func</span> <span style="color: #A6E22E;">main</span>() {
+    fileserver := http.<span style="color: #A6E22E;">FileServer</span>(http.<span style="color: #A6E22E;">Dir</span>(<span style="color: #E6DB74;">"static"</span>))
+    http.<span style="color: #A6E22E;">Handle</span>(<span style="color: #E6DB74;">"/"</span>, fileserver)
+    http.<span style="color: #A6E22E;">ListenAndServe</span>(<span style="color: #E6DB74;">":"</span>+os.<span style="color: #A6E22E;">Getenv</span>(<span style="color: #E6DB74;">"PORT"</span>), <span style="color: #AE81FF;">nil</span>)
 }
 </pre>
 </div>
@@ -509,7 +510,7 @@ fatal: unable to fork
 
 <div class="org-src-container">
 
-<pre class="src src-sh">git commit -am <span style="color: #4E9A06;">"my project"</span>
+<pre class="src src-sh">git commit -am <span style="color: #E6DB74;">"my project"</span>
 git push -u origin master
 </pre>
 </div>
@@ -527,11 +528,10 @@ git push -u origin master
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4"><span class="section-number-2">4</span> HEROKU.com</h2>
 <div class="outline-text-2" id="text-4">
-</div><ol class="org-ol"><li><a id="sec-4-0-0-1" name="sec-4-0-0-1"></a>Логинимся на heroku.<br  /></li>
-<li><a id="sec-4-0-0-2" name="sec-4-0-0-2"></a>Логинимся с помощью git-аккаунта<br  /></li>
-<li><a id="sec-4-0-0-3" name="sec-4-0-0-3"></a>Идем в раздел projects<br  /></li>
-<li><a id="sec-4-0-0-4" name="sec-4-0-0-4"></a>Идем в список своих проектов <a href="https://dashboard.heroku.com/apps">https://dashboard.heroku.com/apps</a><br  /></li>
-<li><a id="sec-4-0-0-5" name="sec-4-0-0-5"></a>Добавляем новое приложение (Create new app)<br  /><div class="outline-text-5" id="text-4-0-0-5">
+</div><ol class="org-ol"><li><a id="sec-4-0-0-1" name="sec-4-0-0-1"></a>Логинимся с помощью git-аккаунта<br  /></li>
+<li><a id="sec-4-0-0-2" name="sec-4-0-0-2"></a>Идем в раздел projects<br  /></li>
+<li><a id="sec-4-0-0-3" name="sec-4-0-0-3"></a>Идем в список своих проектов <a href="https://dashboard.heroku.com/apps">https://dashboard.heroku.com/apps</a><br  /></li>
+<li><a id="sec-4-0-0-4" name="sec-4-0-0-4"></a>Добавляем новое приложение (Create new app)<br  /><div class="outline-text-5" id="text-4-0-0-4">
 
 <div class="figure">
 <p><img src="addnewapp.png" alt="addnewapp.png" />
@@ -540,7 +540,7 @@ git push -u origin master
 </div>
 </li>
 
-<li><a id="sec-4-0-0-6" name="sec-4-0-0-6"></a>Пишем имя своего проекта, либо любое другое, и жмакаем "Create App"<br  /><div class="outline-text-5" id="text-4-0-0-6">
+<li><a id="sec-4-0-0-5" name="sec-4-0-0-5"></a>Пишем имя своего проекта, либо любое другое, и жмакаем "Create App"<br  /><div class="outline-text-5" id="text-4-0-0-5">
 
 <div class="figure">
 <p><img src="nameyourapp.png" alt="nameyourapp.png" />
@@ -549,7 +549,7 @@ git push -u origin master
 </div>
 </li>
 
-<li><a id="sec-4-0-0-7" name="sec-4-0-0-7"></a>Идем в настройки аккаунта (Account Settings)<br  /><div class="outline-text-5" id="text-4-0-0-7">
+<li><a id="sec-4-0-0-6" name="sec-4-0-0-6"></a>Идем в настройки аккаунта (Account Settings)<br  /><div class="outline-text-5" id="text-4-0-0-6">
 
 <div class="figure">
 <p><img src="accsettings.png" alt="accsettings.png" />
@@ -558,7 +558,7 @@ git push -u origin master
 </div>
 </li>
 
-<li><a id="sec-4-0-0-8" name="sec-4-0-0-8"></a>Добавляем новый ssh-key, который нужен для взаимодействия с CircleCI.<br  /><div class="outline-text-5" id="text-4-0-0-8">
+<li><a id="sec-4-0-0-7" name="sec-4-0-0-7"></a>Добавляем новый ssh-key, который нужен для взаимодействия с CircleCI.<br  /><div class="outline-text-5" id="text-4-0-0-7">
 
 <div class="figure">
 <p><img src="sshkeys.png" alt="sshkeys.png" />
@@ -583,7 +583,7 @@ git push -u origin master
 </div>
 </li>
 
-<li><a id="sec-4-0-0-9" name="sec-4-0-0-9"></a>Save Changes<br  /><div class="outline-text-5" id="text-4-0-0-9">
+<li><a id="sec-4-0-0-8" name="sec-4-0-0-8"></a>Save Changes<br  /><div class="outline-text-5" id="text-4-0-0-8">
 
 <div class="figure">
 <p><img src="sshadded.png" alt="sshadded.png" />
@@ -676,7 +676,7 @@ CircleCi не нашел в твоем проекте тестов. Ниче! Д
 <li><a id="sec-5-0-0-7" name="sec-5-0-0-7"></a>Создай в корне проекта файл <b>main _test.go</b> с таким содержимым:<br  /><div class="outline-text-5" id="text-5-0-0-7">
 <div class="org-src-container">
 
-<pre class="src src-go"><span style="color: #A52A2A; font-weight: bold;">package</span> main
+<pre class="src src-go"><span style="color: #F92672;">package</span> main
 </pre>
 </div>
 
@@ -690,7 +690,7 @@ CircleCi не нашел в твоем проекте тестов. Ниче! Д
 <div class="org-src-container">
 
 <pre class="src src-sh">git add .
-git commit -m <span style="color: #4E9A06;">"main_test added"</span>
+git commit -m <span style="color: #E6DB74;">"main_test added"</span>
 git push -u origin master
 </pre>
 </div>
@@ -880,38 +880,38 @@ CMD ["/main"]
 </p>
 <div class="org-src-container">
 
-<pre class="src src-yaml"><span style="color: #204A87;"># </span><span style="color: #204A87;">Golang CircleCI 2.0 configuration file</span>
+<pre class="src src-yaml"># Golang CircleCI 2.0 configuration file
 
-<span style="color: #0084C8; font-weight: bold;">version</span>: 2
+version: 2
 
 
 
-<span style="color: #0084C8; font-weight: bold;">jobs</span>:
+jobs:
 
-  <span style="color: #0084C8; font-weight: bold;">build</span>:
+  build:
 
-    <span style="color: #0084C8; font-weight: bold;">docker</span>:
-      <span style="color: #204A87;"># </span><span style="color: #204A87;">specify the version</span>
-      - <span style="color: #0084C8; font-weight: bold;">image</span>: circleci/golang:1.8
+    docker:
+      # specify the version
+      - image: circleci/golang:1.8
 
-    <span style="color: #0084C8; font-weight: bold;">working_directory</span>: /go/src/github.com/gefracto/go-manual
-    <span style="color: #0084C8; font-weight: bold;">steps</span>:
+    working_directory: /go/src/github.com/gefracto/go-manual
+    steps:
       - checkout
       - setup_remote_docker
 
-      <span style="color: #204A87;"># </span><span style="color: #204A87;">specify any bash command here prefixed with `run: `</span>
-      - <span style="color: #0084C8; font-weight: bold;">run</span>: mkdir TEST_RESULTS
-      - <span style="color: #0084C8; font-weight: bold;">run</span>: go get github.com/jstemmer/go-junit-report
-      - <span style="color: #0084C8; font-weight: bold;">run</span>: go get -v -t -d ./...
-      - <span style="color: #0084C8; font-weight: bold;">run</span>: go test -v ./...
-      - <span style="color: #0084C8; font-weight: bold;">run</span>: wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
-      - <span style="color: #0084C8; font-weight: bold;">run</span>: heroku login
-      - <span style="color: #0084C8; font-weight: bold;">run</span>: git remote add heroku git@heroku.com:go-manual.git
-      - <span style="color: #0084C8; font-weight: bold;">run</span>: CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main
-      - <span style="color: #0084C8; font-weight: bold;">run</span>: docker build -t scratch -f Dockerfile .
-      - <span style="color: #0084C8; font-weight: bold;">run</span>: heroku plugins:install heroku-container-registry
-      - <span style="color: #0084C8; font-weight: bold;">run</span>: heroku container:login
-      - <span style="color: #0084C8; font-weight: bold;">run</span>: heroku container:push web
+      # specify any bash command here prefixed with `run: `
+      - run: mkdir TEST_RESULTS
+      - run: go get github.com/jstemmer/go-junit-report
+      - run: go get -v -t -d ./...
+      - run: go test -v ./...
+      - run: wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+      - run: heroku login
+      - run: git remote add heroku git@heroku.com:go-manual.git
+      - run: CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main
+      - run: docker build -t scratch -f Dockerfile .
+      - run: heroku plugins:install heroku-container-registry
+      - run: heroku container:login
+      - run: heroku container:push web
 </pre>
 </div>
 
@@ -939,7 +939,7 @@ CMD ["/main"]
 <div class="org-src-container">
 
 <pre class="src src-sh">git add .
-git commit -m <span style="color: #4E9A06;">"I DID IT!"</span>
+git commit -m <span style="color: #E6DB74;">"I DID IT!"</span>
 git push -u origin master
 </pre>
 </div>
@@ -973,8 +973,9 @@ go get github.com/gefracto/go-manual
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-07-27 Чт 03:34</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="author">Author: reyc</p>
+<p class="date">Created: 2017-07-27 Чтв 09:27</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
