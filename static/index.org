@@ -1,5 +1,5 @@
 #+BEGIN_CENTER 
-Если ты не видишь эту надпись, значит, твой deploy не удался
+*Если ты не видишь эту надпись, значит, твой deploy не удался*
 #+END_CENTER
 [[file:петросян.jpg]]
 
@@ -193,7 +193,7 @@ cat ~/.ssh/id_rsa.pub
 [[file:sshadded.png]]
 
 
-#+BEGIN_CENTER
+#+BEGIN_CENTER 
 Забудем про HEROKU. 
 
 Он нам больше не нужен. 
@@ -217,3 +217,153 @@ cat ~/.ssh/id_rsa.pub
 
 **** Начинаем билдить проект!
 [[file:startbuilding.png]]
+
+#+BEGIN_CENTER 
+ОПАЧКИ! НЕУДАЧА :(
+#+END_CENTER
+
+[[file:notests.png]]
+
+[[file:youshallnotpasstests.jpg]]
+
+CircleCi не нашел в твоем проекте тестов. Ниче! Дадим ему то, чего он хочет!
+**** Создай в корне проекта файл *main _test.go* с таким содержимым:
+
+#+BEGIN_SRC go
+package main
+#+END_SRC
+
+Да, это всё. Нам просто нечего тестировать.
+
+**** Обновим репозиторий
+#+BEGIN_SRC sh 
+git add .
+git commit -m "main_test added"
+git push -u origin master
+#+END_SRC
+
+CircleCi узнал, что на git'e обновился репозиторий, и тут же начал новый билд.
+На этот раз - удачный.
+[[file:sucs.png]]
+
+#+BEGIN_CENTER 
+Теперь мы должны подружить circleci с heroku.
+Выполним необходимые настройки.
+#+END_CENTER
+
+**** На главной circleci перейдем в настройки проекта, кликнув по шестеренке
+[[file:dosettings.png]]
+
+**** Добавим переменные окружения (Environment Variables)
+[[file:envvar.png]]
+
+Нужно добавить две переменные:
+***** LOGIN
+Value - это все тот же ssh-rsa, который мы берем командой
+#+BEGIN_SRC sh 
+cat ~/.ssh/id_rsa.pub
+#+END_SRC
+
+[[file:herokulogin.png]]
+
+***** API KEY
+
+Идем по [[https://dashboard.heroku.com/account][ccылке]], ищем API KEY, нажимаем REVEAL и копируем ключ
+
+[[file:apikey.png]]
+
+[[file:herokuapikey.png]]
+
+[[file:loginapikey.png]]
+
+Идем по другой [[https://circleci.com/account/heroku][ссылке]], ещё раз сохраним API KEY
+[[file:apikey3.png]]
+
+Идем в раздел Heroku Deployment
+
+[[file:herokudeployment.png]]
+
+**** Нажмем кнопочку Set User
+[[file:setuser.png]]
+
+#+BEGIN_CENTER
+Готово.
+
+Теперь пишем конфиги.
+
+#+END_CENTER
+[[file:headshot.jpg]]
+
+* CONFIGS
+** Procfile
+Перво-наперво создадим в корне проекта файл с именем Procfile и напишем туда
+#+BEGIN_SRC  
+web: go-manual
+#+END_SRC
+
+В твоем случае вместе "go-manual" должно быть имя директории, в которой лежит проект.
+
+** Dockerfile
+#+BEGIN_CENTER
+Конечно же, в качестве контейнера мы будем использовать SCRATCH. 
+
+Он очень легкий и все такое. 
+
+Хотя, погоди...
+#+END_CENTER
+
+[[file:buti.jpg]]
+
+Да, у меня не получилось оживить scratch. Мы будем использовать golang образ.
+
+Создаем в корне проекта Dockerfile, пишем туда следующее:
+
+#+BEGIN_SRC 
+FROM golang:onbuild
+COPY main /
+CMD ["/main"]
+#+END_SRC
+
+** config.yml
+
+Создаем в корне проекта каталог с именем ".circleci", в нем создаем файл "config.yml", куда пишем:
+#+BEGIN_SRC yaml
+# Golang CircleCI 2.0 configuration file
+
+version: 2
+
+
+
+jobs:
+  
+  build:
+    
+    docker:
+      # specify the version
+      - image: circleci/golang:1.8
+      
+    working_directory: /go/src/github.com/gefracto/go-manual
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      # specify any bash command here prefixed with `run: `
+      - run: mkdir TEST_RESULTS
+      - run: go get github.com/jstemmer/go-junit-report
+      - run: go get -v -t -d ./...
+      - run: go test -v ./...
+      - run: wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+      - run: heroku login
+      - run: git remote add heroku git@heroku.com:go-manual.git
+      - run: CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main
+      - run: docker build -t scratch -f Dockerfile .
+      - run: heroku plugins:install heroku-container-registry
+      - run: heroku container:login
+      - run: heroku container:push web
+#+END_SRC
+
+В этом конфиге тебе нужно отредактировать две строчки:
+#+BEGIN_SRC 
+ working_directory: /go/src/github.com/gefracto/go-manual
+- run: git remote add heroku git@heroku.com:go-manual.git
+#+END_SRC
