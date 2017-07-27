@@ -367,3 +367,30 @@ jobs:
  working_directory: /go/src/github.com/gefracto/go-manual
 - run: git remote add heroku git@heroku.com:go-manual.git
 #+END_SRC
+
+Поменяй "go-manual" на свои значения.
+
+* LAST STEPS
+Завершающий пуш:
+#+BEGIN_SRC sh  
+git add .
+git commit -m "I DID IT!"
+git push -u origin master
+#+END_SRC
+
+Иди на circleci.com и смотри, как билдится твой проект.
+
+Это продлится несколько минут.
+
+Можно попить кофейку.
+
+А по возвращению сходи по ссылке на свой [[go-manual.herokuapp.com][проект]]. Найти ты его можешь [[https://dashboard.heroku.com/apps][тут]].
+
+#+BEGIN_CENTER 
+-----------------------
+[[https://github.com/gefracto/go-manual][Исходники этого мануала на github'e]]
+#+BEGIN_SRC 
+go get github.com/gefracto/go-manual
+#+END_SRC
+#+END_CENTER
+
