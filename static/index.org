@@ -163,7 +163,6 @@ git push -u origin master
 
 * HEROKU.com
 **** Логинимся с помощью git-аккаунта
-**** Идем в раздел projects
 **** Идем в список своих проектов [[https://dashboard.heroku.com/apps]]
 **** Добавляем новое приложение (Create new app)
 [[file:addnewapp.png]]
